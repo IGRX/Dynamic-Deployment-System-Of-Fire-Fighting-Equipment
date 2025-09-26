@@ -1,0 +1,187 @@
+/*index.html*/
+/* 地图容器 - 增强视觉效果 */
+#map {
+    height: 700px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transform: translateZ(0);
+    transition: box-shadow 0.3s ease;
+}
+
+#map:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+/* 状态指示器样式 */
+.status-indicator {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 1.5rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.led {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+.led.available {
+    background: #2AAD27;
+}
+.led.busy {
+    background: #FFD326;
+}
+.led.inventory {
+    background: #7B7B7B;
+}
+.led.offline {
+    background: #CB2B3E;
+}
+.led.lost {
+    background: #3D3D3D;
+}
+.led.moving {
+    background: #9C2BCB;
+}
+.led.fixing {
+    background: #2A81CB;
+}
+
+/*下面是装备面板css*/
+/* 面板切换按钮 */
+.toggle-panel-btn {
+    position: fixed;
+    bottom: 0 ;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 30px;
+    background: var(--primary-color);
+    border-radius: 15px 15px 0 0;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+.toggle-panel-btn:hover {
+    background: #c0392b;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+}
+
+/* 装备信息面板 */
+#equipment-panel {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    overflow-y: auto;
+}
+
+#equipment-panel.active {
+    bottom: 0;
+}
+
+/* 当面板激活时的地图状态 */
+body.panel-active #map {
+    height: 50vh !important;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 装备列表项 */
+.equipment-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.equipment-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.equipment-status.空闲 {
+    background: #2AAD27;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
+.equipment-status.使用中 {
+    background: #FFD326;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.3);
+}
+
+.equipment-status.库存 {
+    background: #7B7B7B;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.3);
+}
+
+.equipment-status.损坏 {
+    background: #CB2B3E;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.3);
+}
+
+.equipment-status.维护中 {
+    background: #3D3D3D;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.3);
+}
+.equipment-status.移动中 {
+    background: #9C2BCB;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.3);
+}
+
+.equipment-info {
+    flex: 1;
+}
+
+.equipment-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.equipment-location {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.equipment-detail {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/*index.html结束*/

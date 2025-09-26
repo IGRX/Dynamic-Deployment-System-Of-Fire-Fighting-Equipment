@@ -1,0 +1,85 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>消防装备动态调度系统</title>
+  <link rel="stylesheet" href="./leaflet.css" />
+  <link rel="stylesheet" href="./data/view/style.css">
+  <link rel="stylesheet" href="./index.css">
+  <!-- 加载图标库 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="./leaflet.js"></script>
+  <script src="./mapManager.js"></script>
+  
+</head>
+
+<body>
+  <!-- 侧边栏 -->
+  <div id="sidebar">
+    <h2><i class="fas fa-fire-extinguisher"></i> 导航</h2>
+    <ul>
+      <li>
+        <i class="fas fa-map-marked-alt"></i>
+        实时地图
+      </li>
+      <li onclick="window.location.href='./data/view/editing.html'">
+        <i class="fas fa-tasks"></i>
+        装备管理
+      </li>
+    </ul>
+  </div>
+
+  <!-- 内容区域 -->
+  <div id="content">
+    <div id="home-page" class="page active">
+      <h1><i class="fas fa-fire"></i> 实时装备监控</h1>
+      <div id="map"></div>
+      <!-- 状态指示器 -->
+      <div class="status-indicator">
+        <div class="status-item">
+          <span class="led available"></span>
+          空闲
+        </div>
+        <div class="status-item">
+          <span class="led busy"></span>
+          使用中
+        </div>
+        <div class="status-item">
+          <span class="led offline"></span>
+          损坏
+        </div>
+        <div class="status-item">
+          <span class="led inventory"></span>
+          库存
+        </div>
+        <div class="status-item">
+          <span class="led moving"></span>
+          移动中
+        </div>
+        <div class="status-item">
+          <span class="led fixing"></span>
+          维护中
+        </div>
+        <div class="status-item">
+          <span class="led lost"></span>
+          失去联系
+        </div>
+      </div>
+    </div>
+    <!-- 装备列表 -->
+    <div class="toggle-panel-btn" onclick="togglePanel()">
+      <div class="arrow"></div>
+    </div>
+
+    <div id="equipment-panel">
+      <h2><i class="fas fa-list-ul"></i> 装备状态总览</h2>
+      <div id="equipment-list"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
